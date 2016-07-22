@@ -1,0 +1,155 @@
+// DEFAULT OPTIONS
+
+// Prefix for Hover class names
+
+// Durations
+@fastDuration: .1s;
+@mediumDuration: .3s;
+@slowDuration: .5s;
+
+// Colors
+@primaryColor: #e1e1e1;
+@secondaryColor: #666;
+@highlightColor: #ccc;
+@activeColor: @detail;
+@shadowColor: rgba(0, 0, 0, .6);
+
+// Speech bubbles options
+@tipWidth: 10px;  //the width of the speech bubble tip
+@tipHeight: 10px; //the height of the speech bubble tip
+@tipColor: @primaryColor;
+
+// Arrows options
+@spaceBetweenTextAndArrows: 2.2em;
+
+// Curl dimensions
+@curlWidth: 25px;
+@curlHeight: 25px;
+
+// Curl colors
+@revealAreaColor: white;    // reveal area behind the curl
+@curlLineColor: #aaa;       // crease line
+@curlTransitionColor: #ccc;	// color transitioning from crease line to final color
+@curlLastColor: white;		// final color of the back of the curl
+
+// Browser Prefixes - Which CSS prefixes should be used?
+@webkit: true;
+@moz: false;
+@ms: false;
+@o: false;
+
+// Compile with or without classes
+@includeClasses: true;
+
+.hardwareAccel() {
+  // Improve performance on mobile/tablet devices
+  .prefixed(transform, translateZ(0));
+}
+
+.improveAntiAlias() {
+  // Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.fontSmooth() {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.forceBlockLevel() {
+  // Transforms need to be block-level to work
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hacks() {
+  .forceBlockLevel();
+  .hardwareAccel();
+  .improveAntiAlias();
+  .fontSmooth();
+}
+// prefix declarations
+.prefixed(@property, @value) {
+  & when (@webkit = true) {
+    -webkit-@{property}: @value;
+  }
+
+  & when (@moz = true) {
+    -moz-@{property}: @value;
+  }
+
+  & when (@ms = true) {
+    -ms-@{property}: @value;
+  }
+
+  & when (@o = true) {
+    -o-@{property}: @value;
+  }
+
+    @{property}: @value;
+}
+
+// prefix keyframes
+.keyframes(@name; @content) {
+  & when (@webkit = true) {
+    @-webkit-keyframes @name {
+      @content();
+    }
+  }
+
+  & when (@moz = true) {
+    @-moz-keyframes @name {
+      @content();
+    }
+  }
+
+  & when (@ms = true) {
+    @-ms-keyframes @name {
+      @content();
+    }
+  }
+
+  & when (@o = true) {
+    @-o-keyframes @name {
+      @content();
+    }
+  }
+
+  @keyframes @name {
+    @content();
+  }
+}
+
+
+.underline-from-center() {
+  @duration: 200ms;
+
+  .hacks();
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    background: @activeColor;
+    height: 4px;
+    .prefixed(transition-property, "left, right");
+    .prefixed(transition-duration, @duration);
+    .prefixed(transition-timing-function, ease-out);
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+
+    &:before {
+      left: 0;
+      right: 0;
+    }
+  }
+}

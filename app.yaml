@@ -1,0 +1,11 @@
+# [START app_yaml]
+runtime: nodejs
+vm: true
+handlers:
+- url: /
+  static_files: index.html
+  upload: index.html
+- url: /(.*)
+  static_files: \1
+  upload: (.*)
+# [END app_yaml]

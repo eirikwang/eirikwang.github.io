@@ -1,0 +1,249 @@
+@import 'transformations.less';
+/* Colors*/
+/*@background: #CFD2CD;
+@foreground: #444;
+@flash: #847577;
+@panel: #E5E6E4*/
+@color1: #BFD8D2;
+@color2: #FEDCD2;
+@color3: #DF744A;
+@color4: #DCB239;
+@black: #5b5b5b;
+@white: #fff;
+@grey: #A0A0A0;
+@background: @black;
+@foreground: @black;
+@detail: @color3;
+@flash: @color2;
+@panel: @color2;
+@panel_hover: @color3;
+@panel_hover_background: @color2;
+@panel_hover_fg: @black;
+html {
+  height: 100%;
+  color: @foreground;
+  font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+
+body {
+}
+
+.toppanel {
+  background-color: @background;
+  width: 100%;
+  flex-grow: 1;
+  padding-bottom: 7rem;
+  .container {
+    display: flex;
+    flex-basis: 100rem;
+    flex-direction: column;
+    align-items: center;
+
+  }
+}
+
+.mellompanel {
+  background-color: @white;
+  padding-bottom: 6rem;
+  padding-top: 6rem;
+  word-wrap: break-word;
+}
+
+.infopanel {
+  background-color: @panel;
+  width: 100%
+}
+
+.decoration {
+  position: relative;
+  width: 90%;
+  max-width: 80rem;
+  top: 3rem;
+  img {
+    width: 50%;
+  }
+  img:nth-of-type(1) {
+    position: absolute;
+    left: 1.5%;
+    @media (max-width: 1000px) {
+      //display:none;
+    }
+  }
+  img:nth-of-type(2) {
+    position: absolute;
+    right: 1.5%;
+    transform: scaleX(-1);
+    @media (max-width: 1000px) {
+
+      //display:none;
+    }
+  }
+}
+
+.ustilet {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+}
+
+.frontpagelogo {
+  font-family: 'Playfair Display SC', serif;
+  color: @flash;
+  font-style: italic;
+  font-size: 5rem;
+  margin-top: 20rem;
+  @media (max-width: 1000px) {
+    margin-top: 25%;
+    word-spacing: 1000px;
+    font-size: 4rem;
+
+  }
+  }
+
+.frontpagelogoimg {
+  margin-top: -10rem;
+  width: 25rem;
+  transform: rotate(180deg);
+  @media (max-width: 1000px) {
+  }
+}
+
+
+
+
+.frontpagesub, .frontpagedate {
+  padding-top: 2rem;
+  font-family: 'Playfair Display SC', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+}
+
+.frontpagesub {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  color: @background;
+  background-color: @color3;
+  width: 100%;
+  .blink {
+    color: @color2;
+  }
+}
+
+.frontpagedate {
+  color: @flash;
+}
+
+.frontpagekommerdu {
+  color: @foreground;
+  a {
+    .underline-from-center();
+    color: inherit;
+    font-family: 'Playfair Display SC', serif;
+    font-size: 4rem;
+    text-decoration: none;
+  }
+}
+
+.heart {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 6em;
+}
+
+/* Horisontale paneler */
+
+.panel-boxes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: auto;
+  flex-wrap: wrap;
+}
+
+.panel-box {
+  width: 240px;
+  margin: 2rem;
+}
+
+.panel-klikkbart {
+  display: block;
+  min-height: 16rem;
+  cursor: pointer;
+  outline: none;
+
+  background-color: @panel;
+  border: 2px solid @panel;
+  border-radius: 15px;
+  color: @foreground;
+  text-decoration: none;
+  transition: border 200ms, translate 200ms, hover 200ms, background-image 200ms;
+  padding: 10px;
+  padding-top: 70px;
+  .underline-from-center();
+
+  &:hover, &:focus {
+    background-color: @panel_hover_background;
+    color: @panel_hover_fg;
+    /*box-shadow: 0 2px 14px #E5E6E4;*/
+  }
+}
+
+.ikon-fly, .ikon-hotel, .ikon-info, .ikon-heart, .ikon-rsvp {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 50px;
+  background-position-y: 15px;
+}
+
+.ikon-fly {
+  background-image: url('../img/fly.svg');
+}
+
+.ikon-fly:hover, .ikon-fly:focus {
+  background-image: url('../img/fly_hover.svg');
+}
+
+.ikon-hotel {
+  background-image: url('../img/hotel.svg');
+}
+
+.ikon-hotel:hover, .ikon-hotel:focus {
+  background-image: url('../img/hotel_hover.svg');
+}
+
+.ikon-info {
+  background-image: url('../img/info.svg');
+}
+
+.ikon-info:hover, .ikon-info:focus {
+  background-image: url('../img/info_hover.svg');
+}
+
+.ikon-heart {
+  background-image: url('../img/heart.svg');
+}
+
+.ikon-heart:hover, .ikon-heart:focus {
+  background-image: url('../img/heart_hover.svg');
+}
+
+.ikon-rsvp {
+  background-image: url('../img/rsvp.svg');
+}
+
+.ikon-rsvp:hover, .ikon-rsvp:focus {
+  background-image: url('../img/rsvp_hover.svg');
+}
