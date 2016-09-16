@@ -4,32 +4,42 @@
 @foreground: #444;
 @flash: #847577;
 @panel: #E5E6E4*/
-@color1: #BFD8D2;
-@color2: #FEDCD2;
-@color3: #DF744A;
-@color4: #DCB239;
-@black: #5b5b5b;
-@white: #fff;
+@color1: #E5E372;
+@color2: #AAA966;
+@color3: #7D838C;
+@color4: #DFE5DE;
+@color5: #353A32;
+@color6: #FEDCD2;
+@color7: #FEDCD2;
+@black: #353A32;
+@white: #DFE5DE;
 @grey: #A0A0A0;
 @background: @black;
 @foreground: @black;
 @detail: @color3;
 @flash: @color2;
-@panel: @color2;
+@panel: @color6;
 @panel_hover: @color3;
-@panel_hover_background: @color2;
+@panel_hover_background: #FFEFEB;
 @panel_hover_fg: @black;
 html {
   height: 100%;
   color: @foreground;
   font: 13px/1.5 Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+  background: url('../img/eiriklise.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 body {
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
 
 .toppanel {
-  background-color: @background;
+  //  background-color: @background;
   width: 100%;
   flex-grow: 1;
   padding-bottom: 7rem;
@@ -63,6 +73,7 @@ body {
     width: 50%;
   }
   img:nth-of-type(1) {
+    display: none;
     position: absolute;
     left: 1.5%;
     @media (max-width: 1000px) {
@@ -70,6 +81,7 @@ body {
     }
   }
   img:nth-of-type(2) {
+    display: none;
     position: absolute;
     right: 1.5%;
     transform: scaleX(-1);
@@ -102,50 +114,63 @@ body {
 
 .frontpagelogo {
   font-family: 'Playfair Display SC', serif;
-  color: @flash;
+  color: @color3;
   font-style: italic;
   font-size: 5rem;
-  margin-top: 20rem;
+  text-align: left;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   @media (max-width: 1000px) {
-    margin-top: 25%;
-    word-spacing: 1000px;
-    font-size: 4rem;
-
-  }
-  }
-
-.frontpagelogoimg {
-  margin-top: -10rem;
-  width: 25rem;
-  transform: rotate(180deg);
-  @media (max-width: 1000px) {
+    font-size: 3rem;
   }
 }
+.frontpagelogo-inner{
+  text-align: center;
+  background-color:rgba(red(@color6), green(@color6), blue(@color6), .9);
+  box-sizing: border-box;
+  margin-bottom: 10rem;
+  .fixed-logo & {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  @media(max-width: 1000px){
+    margin-bottom: 5rem;
+  }
 
-
-
+}
+.frontpagelogoimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10rem;
+  @media (max-width: 1000px) {
+    width: 10rem;
+  }
+}
+.frontpagedate {
+  color: @color3;
+}
 
 .frontpagesub, .frontpagedate {
-  padding-top: 2rem;
   font-family: 'Playfair Display SC', serif;
   font-size: 2.5rem;
   font-style: italic;
 }
 
 .frontpagesub {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-  color: @background;
-  background-color: @color3;
+  padding-top: 15rem;
+  padding-bottom: 15rem;
+  color: @color1;
   width: 100%;
-  .blink {
-    color: @color2;
-  }
+  position: relative;
+  background-color:rgba(red(@color3), green(@color3), blue(@color3), .6);
 }
 
-.frontpagedate {
-  color: @flash;
-}
+
 
 .frontpagekommerdu {
   color: @foreground;

@@ -14,65 +14,109 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js" type="text/javascript"></script>
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC|Source+Sans+Pro" rel="stylesheet">
+
 </head>
 <body>
-<div class="main-container">
-    <div class="toppanel">
-        <div class="container  ">
-            <div class="decoration">
-                <img src="img/heart-border.svg"/>
-                <img src="img/heart-border.svg"/>
-            </div>
-            <div>
-            <div class="frontpagelogo">
-                Eirik & Lise
-            </div>
-                <div class="frontpagedate">01.01.2017</div>
-            <img class="frontpagelogoimg" src="img/heart-border-45.svg"/>
-            </div>
+<div class="wrap">
+
+    <div class="frontpagelogo">
+        <div style="height: 100%">&nbsp;</div>
+        <div id="frontpagelogo" class="frontpagelogo-inner">
+            <div>Eirik & Lise</div>
+            <img class="frontpagelogoimg" src="img/hjerte-grey.png"/>
+            <div class="frontpagedate">01.01.2017</div>
         </div>
     </div>
-    <div class="frontpagesub">Vi ønsker <span class="blink">dere</span> velkommen til bryllup på <span
-            class="blink">Mallorca</span></div>
-    <div class="container mellompanel frontpagekommerdu">
-        <a class=" " href="#rsvp">
-            Er du med?
-        </a>
-        <p>Vi ser svært gjerne at du kommer. Det hadde vært fint om du sa fra før 24. desember</p>
-    </div>
-    <div class="infopanel">
-        <ul class="ustilet container panel-boxes">
-            <li class="panel-box ">
-                <a class="panel-klikkbart ikon-heart" href="#rsvp">
-                    <h2>Vår historie</h2>
-                    <p>Vi møttes på sensommeren 2013. Etter det har det gått slag i slag. Vi har vært til Vietnam, USA
-                        og Caribien. Livet vårt ble beriket med lille Frida Elise som kom den 13. desember 2015. Eirik
-                        fridde i juli 2016. Derfor er vi her i dag. </p>
-                </a>
-            </li>
-            <li class="panel-box ">
-                <a class="panel-klikkbart ikon-info" href="#rsvp">
-                    <h2>Praktisk informasjon</h2>
-                    <p>Vi planlegger å ha bryllupet på Mallorca. Vi har samlet alt du ønsker å vite på et sted</p>
-                </a>
-            </li>
-            <li class="panel-box ">
-                <a class="panel-klikkbart ikon-hotel" href="#rsvp">
-                    <h2>Hotel</h2>
-                    <p>Vi kommer til å bo på xx hotel. Andre hoteller er: xx hotell, xx hotell</p>
-                </a>
-            </li>
-            <li class="panel-box">
-                <a class="panel-klikkbart ikon-fly" href="#rsvp">
-                    <h2>Fly</h2>
-                    <p>Norwegian og Ryanair flyr begge direkteruter til Palma. Flere reiseselskaper har også
-                        charter-fly.</p>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div class="main-container">
+        <div class="frontpagesub">Vi ønsker <span class="blink">dere</span> velkommen til bryllup på <span
+                class="blink">Mallorca</span></div>
+        <div class="container mellompanel frontpagekommerdu">
+            <a class=" " href="#rsvp">
+                Er du med?
+            </a>
+            <p>Vi ser svært gjerne at du kommer. Det hadde vært fint om du sa fra før 24. desember</p>
+        </div>
+        <div class="infopanel">
+            <ul class="ustilet container panel-boxes">
+                <li class="panel-box ">
+                    <a class="panel-klikkbart ikon-heart" href="#rsvp">
+                        <h2>Vår historie</h2>
+                        <p>Vi møttes på sensommeren 2013. Etter det har det gått slag i slag. Vi har vært til Vietnam,
+                            USA
+                            og Caribien. Livet vårt ble beriket med lille Frida Elise som kom den 13. desember 2015.
+                            Eirik
+                            fridde i juli 2016. Derfor er vi her i dag. </p>
+                    </a>
+                </li>
+                <li class="panel-box ">
+                    <a class="panel-klikkbart ikon-info" href="#rsvp">
+                        <h2>Praktisk informasjon</h2>
+                        <p>Vi planlegger å ha bryllupet på Mallorca. Vi har samlet alt du ønsker å vite på et sted</p>
+                    </a>
+                </li>
+                <li class="panel-box ">
+                    <a class="panel-klikkbart ikon-hotel" href="#rsvp">
+                        <h2>Hotel</h2>
+                        <p>Vi kommer til å bo på xx hotel. Andre hoteller er: xx hotell, xx hotell</p>
+                    </a>
+                </li>
+                <li class="panel-box">
+                    <a class="panel-klikkbart ikon-fly" href="#rsvp">
+                        <h2>Fly</h2>
+                        <p>Norwegian og Ryanair flyr begge direkteruter til Palma. Flere reiseselskaper har også
+                            charter-fly.</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
+    </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="js/main.js"></script>
+<script type="application/javascript">
+    function hasClass(ele,cls) {
+        return !!ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+    }
+
+    function addClass(ele,cls) {
+        if (!hasClass(ele,cls)) ele.className += " "+cls;
+    }
+
+    function removeClass(ele,cls) {
+        if (hasClass(ele,cls)) {
+            var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+            ele.className=ele.className.replace(reg,' ');
+        }
+    }
+    var startProductBarPos=-1;
+    window.onscroll=function(){
+        var bar = document.getElementById('frontpagelogo');
+        if(startProductBarPos<0)startProductBarPos=findPosY(bar);
+
+        var body = document.body;
+        if(pageYOffset>startProductBarPos){
+            addClass(body, "fixed-logo");
+        }else{
+            removeClass(body, "fixed-logo");
+        }
+
+    };
+
+
+    function findPosY(obj) {
+        var curtop = 0;
+        if (typeof (obj.offsetParent) != 'undefined' && obj.offsetParent) {
+            while (obj.offsetParent) {
+                curtop += obj.offsetTop;
+                obj = obj.offsetParent;
+            }
+            curtop += obj.offsetTop;
+        }
+        else if (obj.y)
+            curtop += obj.y;
+        return curtop;
+    }
+</script>
 </body>
 </html>
