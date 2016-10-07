@@ -38,7 +38,7 @@ html {
 }
 
 body {
-
+  transition: max-height 0.5s ease-in;
 }
 
 .toppanel {
@@ -63,8 +63,15 @@ body {
 }
 
 .infopanel {
+  .fixed-logo & {
+    max-height: 200px;
+  }
+  max-height: 0;
+  position: fixed;
+  bottom: 0;
   background-color: @panel;
-  width: 100%
+  width: 100%;
+  display:none;
 }
 
 .decoration {
@@ -109,6 +116,9 @@ body {
   text-align: center;
   width: 100%;
   height: 100%;
+  .ombryllupet:nth-child(n+1){
+    margin-top: 20rem;
+  }
 }
 
 .container {
@@ -123,8 +133,9 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+
   @media (max-width: 1000px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
@@ -145,6 +156,7 @@ body {
   }
   .frontpagedate{
     font-style: normal;
+
   }
 
   .fixed-logo & {
@@ -158,7 +170,6 @@ body {
   @media (max-width: 1000px) {
     margin-bottom: 5rem;
   }
-
 }
 
 .frontpagelogoimg {
@@ -182,22 +193,64 @@ body {
   color: @color3;
 }
 
-.frontpagesub, .frontpagedate {
+.frontpagesub-header, .frontpagedate {
   font-family: 'Playfair Display SC', serif;
   font-size: 2.5rem;
   font-style: italic;
+  @media (max-width: 1000px) {
+    font-size: 1.5rem;
+  }
+
+}
+
+.ombryllupet{
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+
+  background: @color4 ;
+  background-color: rgba(red(@color4), green(@color4), blue(@color4), .9);
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  .ombryllupet-header {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 2.5rem;
+
+  }
+  .ombryllupet-text {
+    padding-top:2rem;
+    padding-left:1rem;
+    padding-right:1rem;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 1.5rem;
+    max-width: 1000px;
+    text-align: justify;
+
+  }
 }
 
 .frontpagesub {
-  padding-top: 15rem;
-  padding-bottom: 15rem;
+  display:none;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   color: @color1;
   width: 100%;
+  height: 100%;
   position: relative;
   background-color: rgba(red(@color3), green(@color3), blue(@color3), .6);
+  //display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
 }
 
 .frontpagekommerdu {
+  display: none;
   color: @foreground;
   a {
     .underline-from-center();
